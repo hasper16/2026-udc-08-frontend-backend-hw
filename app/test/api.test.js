@@ -14,6 +14,10 @@ const asTaras = (r) => r.set("x-user-id", "2");
 describe("authentication", () => {
   it("rejects a request with no user header", async () => {
     await request(app).get("/api/notes").expect(401);
+    await request(app).get("/api/notes/1").expect(401);
+    await request(app).post("/api/notes").send({ title: "Тест" }).expect(401);
+    await request(app).delete("/api/notes/1").expect(401);
+    await request(app).patch("/api/notes/1/archive").send({ archived: true }).expect(401);
   });
 });
 

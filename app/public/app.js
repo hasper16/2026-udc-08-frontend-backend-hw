@@ -37,9 +37,14 @@ tabActive.addEventListener("click", () => switchTab("active"));
 tabArchived.addEventListener("click", () => switchTab("archived"));
 
 async function load() {
-  const url = currentTab === "archived" ? "/api/notes?archived=true" : "/api/notes";
+  const requestedTab = currentTab;
+  const url = requestedTab === "archived" ? "/api/notes?archived=true" : "/api/notes";
   const res = await fetch(url, { headers: headers() });
   const notes = await res.json();
+
+  if (currentTab !== requestedTab) {
+    return;
+  }
 
   list.replaceChildren(
     ...notes.map((n) => {

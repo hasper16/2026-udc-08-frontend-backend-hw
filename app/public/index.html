@@ -24,8 +24,10 @@
     </nav>
 
     <form id="new-note" aria-label="Створити нотатку">
-      <input id="title" placeholder="Заголовок" aria-label="Заголовок" required />
-      <input id="body" placeholder="Текст" aria-label="Текст" />
+      <label for="title" class="sr-only">Заголовок</label>
+      <input id="title" placeholder="Заголовок" required />
+      <label for="body" class="sr-only">Текст</label>
+      <input id="body" placeholder="Текст" />
       <button type="submit">Додати</button>
     </form>
 
